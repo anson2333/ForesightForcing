@@ -8,11 +8,8 @@ imagewam_init "${SCRIPT_DIR}/../.."
 
 SUITE="libero_plus"
 CONFIG_NAME="sim_libero"
-FLUX2_VARIANT="${FLUX2_VARIANT:-9b}" # 4b | 9b
+FLUX2_VARIANT="${FLUX2_VARIANT:-4b}" # 4b | 9b
 TASK="${TASK:-libero_plus}"
-if [ "false" = "true" ]; then
-  TASK="${TASK/_imagewam/_clean_imagewam}"
-fi
 
 imagewam_require_env FLUX2_SRC
 imagewam_require_env FLUX2_AE_MODEL_PATH

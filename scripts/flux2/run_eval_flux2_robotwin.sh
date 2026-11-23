@@ -61,6 +61,7 @@ fi
 
 COMMON+=(
   model.proprio_dim="${PROPRIO_DIM:-14}"
+  model.qwen_context_len="${QWEN_CONTEXT_LEN:-128}"
   EVALUATION.eval_num_episodes="${EVAL_NUM_EPISODES:-50}"
   MULTIRUN.phases="${PHASES:-[clean,random]}"
   EVALUATION.skip_get_obs_within_replan="${SKIP_GET_OBS_WITHIN_REPLAN:-true}"

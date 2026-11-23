@@ -17,7 +17,7 @@ are removed: transition queries are predicted from the current observation,
 language instruction, and proprioceptive state, and the action expert uses the
 current visual tokens together with those queries.
 
-**Project resources:** [project website](https://anson2333.github.io/foresight-forcing/) · [code](https://github.com/anson2333/ForesightForcing) · [model weights (Hugging Face, coming soon)](https://huggingface.co/anson233/foresight-forcing)
+**Project resources:** [project website](https://anson2333.github.io/foresight-forcing/) · [code](https://github.com/anson2333/ForesightForcing) · [model weights (Hugging Face)](https://huggingface.co/anson233/foresight-forcing)
 
 ## Results
 
@@ -111,6 +111,7 @@ huggingface-cli download yuanty/LIBERO-fastwam \
 
 huggingface-cli download yuanty/robotwin2.0-fastwam \
   --repo-type dataset --local-dir data/robotwin2.0
+(cd data/robotwin2.0 && cat robotwin2.0.tar.gz.part-* | tar -xzf -)
 ```
 
 Set the matching root before training:
@@ -122,8 +123,7 @@ export DATA_ROOT=$(pwd)/data/robotwin2.0
 export ROBOTWIN_ROOT=$DATA_ROOT/robotwin2.0
 ```
 
-When the Hugging Face model repository is public, the released checkpoints can
-be downloaded with:
+The released checkpoints can be downloaded from Hugging Face with:
 
 ```bash
 huggingface-cli download anson233/foresight-forcing \
@@ -205,7 +205,6 @@ configs/                  Hydra model, data, and task configurations
 experiments/              LIBERO and RoboTwin evaluation integrations
 scripts/                  Training, evaluation, and setup entrypoints
 src/imagewam/             ImageWAM and Foresight Forcing implementation
-tests/                    Unit tests for geometry and data contracts
 third_party/vggt/         Pinned VGGT submodule
 ```
 
@@ -214,8 +213,7 @@ third_party/vggt/         Pinned VGGT submodule
 Run the lightweight checks after installing the environment:
 
 ```bash
-python3 -m compileall -q src scripts experiments tests
-pytest -q tests
+python3 -m compileall -q src scripts experiments
 ```
 
 ## License

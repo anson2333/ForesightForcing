@@ -7,7 +7,6 @@ outputs/
 checkpoints
 data/*
 apex/
-assets/
 runs
 runs/
 evaluate_results/
@@ -15,23 +14,6 @@ evaluate_results/
 .env.local
 .env.*.local
 .tmp/
-relevance_viz/
-.tools/
-tests/
-
-# Release-excluded code paths.
-src/imagewam/datasets/hdf5/
-src/imagewam/utils/action_attention_rollout.py
-
-# Release staging archives are local-only and must never be committed.
-archive/
-**/archive/
-scripts/archive/
-
-# Optional release experiments are local-only until explicitly promoted.
-optional/
-**/optional/
-scripts/optional/
 
 
 # ai coding
@@ -55,6 +37,7 @@ scripts/optional/
 *.pickle
 *.txt
 *.toml
+!pyproject.toml
 
 # Other uncheckable file types
 *.zip

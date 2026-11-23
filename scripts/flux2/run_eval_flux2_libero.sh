@@ -10,9 +10,6 @@ SUITE="libero"
 CONFIG_NAME="sim_libero"
 FLUX2_VARIANT="${FLUX2_VARIANT:-4b}" # 4b | 9b
 TASK="${TASK:-libero}"
-if [ "false" = "true" ]; then
-  TASK="${TASK/_imagewam/_clean_imagewam}"
-fi
 
 imagewam_require_env FLUX2_SRC
 imagewam_require_env FLUX2_AE_MODEL_PATH
@@ -56,7 +53,8 @@ fi
 
 COMMON+=(
   model.proprio_dim="${PROPRIO_DIM:-8}"
-  data.train.qwen_context_len="${QWEN_CONTEXT_LEN:-512}"
+  model.qwen_context_len="${QWEN_CONTEXT_LEN:-128}"
+  data.train.qwen_context_len="${QWEN_CONTEXT_LEN:-128}"
   data.train.qwen_text_cache_format=qwen3_flux2
   MULTIRUN.task_suite_names="${TASK_SUITE_NAMES:-[libero_10,libero_goal,libero_spatial,libero_object]}"
   EVALUATION.num_trials="${NUM_TRIALS:-25}"
