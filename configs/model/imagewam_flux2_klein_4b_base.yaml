@@ -1,0 +1,93 @@
+_target_: imagewam.runtime.create_imagewam_flux2_klein
+
+flux2_src_path: null
+flux2_model_path: ???
+ae_model_path: ???
+variant: klein-base-4b
+qwen3_model_spec: Qwen/Qwen3-4B
+qwen_context_len: 512
+load_text_encoder: false
+proprio_dim: null
+mot_checkpoint_mixed_attn: true
+mot_gqa_implementation: repeat
+mot_force_flash_attention: false
+pack_proprio_after_text: true
+action_dit_pretrained_path: null
+
+flux2_lora_config:
+  enabled: false
+  rank: 16
+  alpha: 16.0
+  dropout: 0.0
+  save_lora_merged: false
+  save_trainable_only: false
+  target_suffixes:
+    - qkv
+    - proj
+    - linear1
+    - linear2
+    - img_mlp.0
+    - img_mlp.2
+    - txt_mlp.0
+    - txt_mlp.2
+
+action_dit_config:
+  action_dim: ${data.train.processor.action_output_dim}
+  hidden_dim: 1024
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers_double: 5
+  num_layers_single: 20
+  mlp_ratio: 4.0
+  max_action_horizon: 64
+  use_gradient_checkpointing: ${model.mot_checkpoint_mixed_attn}
+
+video_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+action_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+
+loss:
+  lambda_video: 0.5
+  lambda_action: 1.0
+  geometry_transition:
+    enabled: true
+    mode: bottleneck
+    action_condition: dropout
+    action_full_keep_prob: 0.5
+    inference_action_condition: transition_and_ref
+    weight: 0.1
+    scale_weight: 0.05
+    vggt_repo_path: null
+    vggt_model_id: facebook/VGGT-1B
+    vggt_drop_heads: true
+    projector_mid_channels: 1024
+    num_heads: 8
+    objective: geometry_forcing
+    relation_weight: 1.0
+    forcing_weight: 1.0
+    angular_weight: 0.5
+    forcing_norm_weight: 0.01
+    scale_head_hidden: null
+    background_weight: 0.1
+    share_teacher_forward: false
+    warp_ref_to_target: true
+    warp_method: flow
+    warp_drop_invalid: true
+    vggt_multiview: false
+    vggt_backend: vggt
+    teacher_channels: 2048
+    image_size: 518
+    relation_num_tokens: 256
+    num_camera_views: 2
+    camera_tiling: horizontal
+    use_action_aware_weight: true
+    action_weight_eta: 0.25
+    action_weight_temp: 0.07
+    loss_warmup_steps: 2000
+    loss_warmup_start_scale: 0.01
