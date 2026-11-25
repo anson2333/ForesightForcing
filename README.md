@@ -149,16 +149,6 @@ bash scripts/flux2/run_train_flux2_klein_imagewam.sh
 
 Useful overrides include `ZERO_STAGE`, `ACTION_INIT`, and `QWEN_CACHE_DIR`. If `ACTION_INIT` is omitted, the launcher creates compatible ActionDiT initialization weights automatically.
 
-## Repository Structure
-
-```text
-configs/                  Hydra model, data, and task configurations
-experiments/              LIBERO and RoboTwin evaluation integrations
-scripts/                  Training, evaluation, and setup entrypoints
-src/imagewam/             ImageWAM and Foresight Forcing implementation
-third_party/vggt/         Pinned VGGT submodule
-```
-
 ## Citation
 
 If you find this work useful, please consider citing:
@@ -174,7 +164,7 @@ If you find this work useful, please consider citing:
 
 ## Acknowledgements
 
-This repository builds on [ImageWAM](https://github.com/AnjieCheng/Implicit-World-Models), [VGGT](https://github.com/facebookresearch/vggt), and [FLUX.2](https://github.com/black-forest-labs/flux2). We thank the authors for releasing their work.
+We thank [ImageWAM](https://github.com/AnjieCheng/Implicit-World-Models) for their open-source work.
 
 ## License
 
