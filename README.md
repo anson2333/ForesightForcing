@@ -1,10 +1,24 @@
-# Foresight Forcing
+<div align="center">
 
-### Learning Spatial Foresight for Robotic Manipulation
+<h1>Foresight Forcing</h1>
 
-Mishuo Han, Zhixuan Liang, Zhaoyuan Wan, Wendi Chen, Jiarui Chen, Xinkai Wang, Yue Ma, Yu Zhou, Junting Chen, Yao Mu, Jun Lv, Chuan Wen, and Cewu Lu
+<h3>Learning Spatial Foresight for Robotic Manipulation</h3>
 
-[Paper](https://arxiv.org/abs/2611.30963) · [Project Page](https://anson2333.github.io/foresight-forcing/) · [Models](https://huggingface.co/anson233/foresight-forcing) · [Quick Start](#quick-start) · [Evaluation](#evaluation) · [Training](#training) · [Citation](#citation)
+<p>
+  <a href="https://arxiv.org/abs/2611.30963"><img src="https://img.shields.io/badge/arXiv-2611.30963-b31b1b" alt="Paper on arXiv"></a>
+  <a href="https://anson2333.github.io/foresight-forcing/"><img src="https://img.shields.io/badge/Project-Foresight_Forcing-2563eb" alt="Project page"></a>
+  <a href="https://huggingface.co/anson233/foresight-forcing"><img src="https://img.shields.io/badge/Hugging_Face-Models-ffcc4d" alt="Model weights"></a>
+</p>
+
+<p>
+  <a href="https://arxiv.org/pdf/2611.30963">Paper PDF</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#evaluation">Evaluation</a> ·
+  <a href="#training">Training</a> ·
+  <a href="#citation">Citation</a>
+</p>
+
+</div>
 
 Foresight Forcing is a World Action Model that learns **spatial transition queries** from correspondence-aligned changes in a pretrained 3D feature space. During training, a frozen 3D teacher provides dense supervision for anticipated geometric transitions. At deployment, the policy predicts these queries directly from the current observation, language instruction, and proprioceptive state—without future observations or the 3D teacher.
 
